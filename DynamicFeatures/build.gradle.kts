@@ -68,6 +68,21 @@ allprojects {
                 sourceCompatibility = JavaVersion.VERSION_1_8
                 targetCompatibility = JavaVersion.VERSION_1_8
             }
+
+            // dynamic features only
+            if (pluginManager.hasPlugin("com.android.dynamic-feature")) {
+                extensions.findByType(com.android.build.gradle.AppExtension::class)?.apply {
+                    buildTypes {
+                        getByName("debug") {}
+                        getByName("release") {}
+                    }
+                    flavorDimensions("default")
+                    productFlavors {
+                        maybeCreate("develop")
+                        maybeCreate("production")
+                    }
+                }
+            }
         }
     }
 }

@@ -33,6 +33,13 @@ android {
         }
     }
 
+    flavorDimensions "default"
+
+    productFlavors {
+        develop {}
+        production {}
+    }
+
     dynamicFeatures = [':features:kotlin',
                        ':features:initialInstall',
                        ':features:java',
