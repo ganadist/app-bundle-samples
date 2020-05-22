@@ -20,9 +20,6 @@ buildscript {
     //extra.versions =
     val kotlinVersion = "1.3.61"
     extra.set("versions" , mapOf(
-            "compileSdk"        to 28,
-            "minSdk"            to 24,
-            "targetSdk"         to 28,
             "kotlin"            to kotlinVersion,
             "playcore"          to "1.6.4",
             "appcompat"         to "1.1.0",
@@ -55,5 +52,22 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+
+    afterEvaluate {
+        extensions.findByType(com.android.build.gradle.BaseExtension::class)?.apply {
+            compileSdkVersion(28)
+            defaultConfig {
+                minSdkVersion(24)
+                targetSdkVersion(28)
+                versionCode = 1
+                versionName = "1.0"
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            }
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_1_8
+                targetCompatibility = JavaVersion.VERSION_1_8
+            }
+        }
     }
 }

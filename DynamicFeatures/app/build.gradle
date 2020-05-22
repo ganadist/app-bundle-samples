@@ -19,16 +19,9 @@ apply plugin: 'kotlin-android'
 
 android {
 
-    compileSdkVersion versions.compileSdk
-
     defaultConfig {
         applicationId names.applicationId
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        versionCode 1
-        versionName "1.0"
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -38,11 +31,6 @@ android {
         release {
             minifyEnabled true
         }
-    }
-
-    compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
     }
 
     dynamicFeatures = [':features:kotlin',
